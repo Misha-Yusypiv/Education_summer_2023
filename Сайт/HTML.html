@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Калькулятор податку на дохід з оренди</title>
+	<style>
+        body {
+            background-color: beige;
+            color: rgb(165, 112, 42);
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: rgb(165, 112, 42);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            width: 40%;
+            box-sizing: border-box;
+            font-size: 1.2em;
+            height: 2em;
+            background-color:rgba(165, 122, 42, 0.842); 
+            color:white
+        }
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        label {
+            color:rgb(0, 0, 0); 
+            font-size:1.2em; 
+            margin-bottom:.5em; 
+            text-align:left; 
+            width: 550px;; 
+            display:block
+        }
+        input[type="number"] {
+            width: 550px;; 
+            margin-bottom:.7em; 
+            font-size:.8em
+        }
+        input[type="submit"]:hover {
+            background-color:rgb(108, 165, 42)
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+	<h1>Калькулятор податку на дохід з оренди</h1>
+	<form onsubmit="return false;">
+		<label for="rentCost">Вартість оренди житла для орендаря:</label>
+		<input type="number" id="rentCost" placeholder="Вартість оренди житла" style="height:auto">
+		
+		<label for="serviceCost">Витрати на обслуговування житла для власника житла:</label>
+		<input type="number" id="serviceCost" placeholder="Витрати на обслуговування житла" style="height:auto">
+		
+		<label for="taxPercent">Відсоток податку на оренду житла:</label>
+		<input type="number" id="taxPercent" placeholder="Відсоток податку на оренду житла" style="height:auto">
+		
+        <input type="submit" value="Розрахувати податок" onclick="calculateTax()">
+		
+        <div id='result'></div>
+		
+    </form>
+
+<script>
+	function calculateTax() {
+	  let rentCost = document.getElementById("rentCost").value;
+	  let serviceCost = document.getElementById("serviceCost").value;
+	  let taxPercent = document.getElementById("taxPercent").value;
+
+	  let tax = (rentCost - serviceCost) * (taxPercent / 100);
+	  
+	  document.getElementById('result').innerHTML = `Податок на оренду нерухомості становить ${tax} $`;
+	  
+	  return false; // prevent form submission
+}
+</script>
+
+</body>
+</html>
